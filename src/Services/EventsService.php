@@ -16,6 +16,7 @@ use Symfony\Component\Uid\Uuid;
 final readonly class EventsService
 {
     private const INSERT_BATCH_SIZE = 100;
+    private const NOTIFY_TOPIC = 'https://sportsevents.com/events';
 
     public function __construct(
         private CacheItemPoolInterface $cache,
@@ -62,12 +63,12 @@ final readonly class EventsService
     {
         return $this->doctrine
             ->getRepository(Event::class, 'read_only_connection')
-            ->findAll(); // fetchLatestEvents()
+            ->findAll(); // @TODO fetchLatestEvents($filters)
     }
 
     public function notifyEvents(array $events): void
     {
-        $update = new Update('https://sportevents.com', json_encode($events));
+        $update = new Update(self::NOTIFY_TOPIC, json_encode($events));
 
         $this->messageBus->dispatch($update);
     }

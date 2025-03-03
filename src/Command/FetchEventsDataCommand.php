@@ -41,7 +41,7 @@ final class FetchEventsDataCommand extends Command
 
             $this->eventsService->processEvents($events);
 
-            $io->note('Processing events for provider: '.$provider::class);
+            $io->note('Processing events for provider: ' . $provider::class);
         }
 
         return Command::SUCCESS;

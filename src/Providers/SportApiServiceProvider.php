@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class SportApiServiceProvider extends AbstractProvider implements ProviderInterface
 {
-    static protected string $baseUrl = 'https://api.github.com/';
+    static protected string $baseUrl = 'https://api-services.com/';
 
     public function fetch(): array
     {
@@ -17,7 +17,7 @@ final class SportApiServiceProvider extends AbstractProvider implements Provider
             ->request(Request::METHOD_GET, '/events', [
                 'auth_bearer' => 'token',
                 'headers' => [
-                    'Accept' => 'application/vnd.github.v3+json',
+                    'Accept' => 'application/json',
                 ],
             ]);
 

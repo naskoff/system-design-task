@@ -42,8 +42,8 @@ final class SportXmlServiceProvider extends AbstractProvider implements Provider
     public function toArray(array $data): array
     {
         return array_map(fn(array $item) => [
-            'id' =>  $item['id'],
-            'name' =>  $item['name'],
+            'id' => $item['id'],
+            'name' => $item['name'],
             // process other fields
         ], $data);
     }
