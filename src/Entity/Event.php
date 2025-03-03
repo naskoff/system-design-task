@@ -18,6 +18,8 @@ class Event
     #[ORM\Column(length: 255)]
     protected string $name;
 
+    // add more event related data
+
     public function getId(): int
     {
         return $this->id;

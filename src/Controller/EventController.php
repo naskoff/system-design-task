@@ -24,6 +24,7 @@ final class EventController extends AbstractController
     {
     }
 
+    #[Route('/events', name: 'events', methods: [Request::METHOD_GET])]
     public function list(Request $request): Response
     {
         $cacheKey = hash('sha1', $request->getUri());
